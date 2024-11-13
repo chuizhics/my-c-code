@@ -1,0 +1,32 @@
+                                            高级IO
+非阻塞IO
+    有限状态机编程
+
+1.非阻塞IO
+
+
+
+2.IO多路转接
+    select();
+    poll();
+    epoll();
+
+3. 其他读写函数
+
+    // 读写来源不同的碎片地址
+    readv();
+    writev();
+
+    // 坚持读写n个字节
+    readn();
+    writen();
+
+4. 存储映射IO
+
+    mmap();
+
+5. 文件锁
+
+    fcntl();
+    lockf();
+    flock();

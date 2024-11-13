@@ -1,0 +1,72 @@
+                                    进程间通信
+
+
+1 管道
+    内核提供，单工，自同步机制
+    匿名管道
+        pipe();
+    命名管道
+        mkfifo();
+
+2  XSI -> SysV   (命令 ipcs)
+
+    主动端: 先发包的一方
+    被动端: 先收包的一方（先运行）
+
+
+     man  xxxget  xxxop  xxxctl 
+        xxx -> msg  sem  shm
+
+    key: ftok();
+
+    Message Queues
+        msgget();
+        msgsnd();
+        msgrcv();
+        msgctl();
+
+    Semaphore Arrays
+
+
+    Shared Memory Segments
+
+
+3  网络套接字socket
+    讨论:跨主机的传输要注意的问题
+    1.字节序问题:  
+        大端: 低地址处放高字节
+        小端: 低地址处放低字节 （x86 大多数）
+        主机字节序: host
+        网络字节序: network
+        解决:  _ to _ _ : htons(host to network short),htonl,ntohs,ntohl
+    2.对齐:
+        struct
+        {
+            int i;
+            float f;
+            char ch;
+        };
+        解决: 不对齐(按1字节对齐)
+    
+    3 类型长度问题
+        int  char 
+        解决: int32_t , uint32_t, int64_t, int8_t, uint8_t
+    
+    SOCKET是什么
+
+
+    报式套接字:
+        socket();
+        bind();
+        sendto();
+        rcvfrom();
+        inet_pton();
+        inet_ntop();
+
+        setsockopt();
+        getsockopt();
+
+        多点通信: 广播(全网广播、子网广播)， 多播/组播
+                                        224.0.0.1  (所有支持多播并的节点都默认在这个组，且无法离开)
+
+    流式套接字:
